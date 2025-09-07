@@ -1,0 +1,28 @@
+name: Icarus Verilog simulation
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'rtl/**'
+      - 'tb/**'
+      - 'scripts/**'
+      - '.github/workflows/sim.yml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'rtl/**'
+      - 'tb/**'
+      - 'scripts/**'
+      - '.github/workflows/sim.yml'
+
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Icarus Verilog
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+      - name: Run simulation
+        run: bash scripts/run_iverilog.sh
