@@ -25,4 +25,4 @@ jobs:
       - name: Install Icarus Verilog
         run: sudo apt-get update && sudo apt-get install -y iverilog
       - name: Run simulation
-        run:bash  scripts/run_iverilog.sh || true
+         run:ash  scripts/run_iverilog.sh || true
